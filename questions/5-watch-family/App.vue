@@ -23,9 +23,13 @@ const state = ref({
   count: 0,
 })
 
-watch(state, () => {
-  console.log("The state.count updated")
-})
+watch(
+  state,
+  () => {
+    console.log("The state.count updated")
+  },
+  { deep: true }
+)
 
 state.value.count = 2
 
@@ -36,9 +40,13 @@ state.value.count = 2
 
 const eleRef = ref()
 const age = ref(2)
-watch(age, () => {
-  console.log(eleRef.value)
-})
+watch(
+  age,
+  () => {
+    console.log(eleRef.value)
+  },
+  { flush: "post" }
+)
 age.value = 18
 </script>
 
